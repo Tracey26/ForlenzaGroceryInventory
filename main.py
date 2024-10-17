@@ -63,20 +63,26 @@ while True:
     choice = input("Enter your choice (1-5): ")
 
     if choice == "1":
+        #prints inventory items
+        print(inventory)
         name = input("Enter item name: ")
         price = input("Enter item price: ")
         quantity = int(input("Enter item quantity: "))
         add_item(inventory, name, price, quantity)
     elif choice == "2":
+        print(inventory)
         name = input("Enter item name to remove: ")
         remove_item(inventory, name)
     elif choice == "3":
+        print(inventory)
         name = input("Enter item name to update: ")
         quantity = input("Enter new quantity: ")
         update_quantity(inventory, name, quantity)
     elif choice == "4":
+        print(inventory)
         display_inventory(inventory)
     elif choice == "5":
+        print(inventory)
         print("Exiting the program.")
         break
     else:
