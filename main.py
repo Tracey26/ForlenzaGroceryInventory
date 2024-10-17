@@ -19,7 +19,10 @@ def remove_item(inventory, item_name):
     inventory (dict): The current inventory
     item_name (str): The name of the item to remove
     """
-    del inventory[item_name]
+    #ensures that even with spaces added at the end or beggining
+    # of item the item will be removed
+
+    del inventory[item_name.strip()]
     print(f"{item_name} removed from the inventory.")
 
 def update_quantity(inventory, item_name, new_quantity):
