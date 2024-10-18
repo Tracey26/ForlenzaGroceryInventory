@@ -14,4 +14,13 @@
   - View the current inventory.
   - Search for items by name.
 
+## Version 1.2
+-2024-10-17
+- added stip function in order to prevent user error with spacing
+- used the print function to display items in list with every option
 
+## Version 1.3
+- For adding items I chnaged the input to take floats
+- For removing items i added try and except in order for the code to check if an item is in the dicitonary if it is it will be removed and if not it will print invalid choice
+-in order to update the quantity I removed one of the double equal signs as it is not a comparison and needs to be a declaration
+- When adding an item and an item already exists it will confirm with the user if they would like to overwrite it

@@ -21,7 +21,7 @@ def remove_item(inventory, item_name):
     """
     #ensures that even with spaces added at the end or beggining
     # of item the item will be removed
-
+    
     del inventory[item_name.strip()]
     print(f"{item_name} removed from the inventory.")
 
@@ -34,7 +34,8 @@ def update_quantity(inventory, item_name, new_quantity):
     item_name (str): The name of the item to update
     new_quantity (str): The new quantity of the item
     """
-    inventory[item_name]["quantity"] == new_quantity
+    # the double == makes it a comparison opposed to a declaration
+    inventory[item_name]["quantity"] = new_quantity
     print(f"{item_name} quantity updated to {new_quantity}.")
 
 def display_inventory(inventory):
@@ -44,7 +45,7 @@ def display_inventory(inventory):
     Args:
     inventory (dict): The current inventory
     """
-    if len(inventory) == 0:
+    if len(inventory) ==0:
         print("Inventory is empty.")
     else:
         print("Current Inventory:")
@@ -58,31 +59,35 @@ inventory = {
     "banana": {"price": 0.75, "quantity": 150}
 }
 
+
 while True:
+    display_inventory(inventory)
     print("\n1. Add item\n2. Remove item\n3. Update quantity\n4. Display inventory\n5. Exit")
     choice = input("Enter your choice (1-5): ")
 
     if choice == "1":
-        #prints inventory items
-        print(inventory)
         name = input("Enter item name: ")
-        price = input("Enter item price: ")
+        if name in inventory:
+            confirm= input("This item already exists. Are you sure you want to overwrite this item? Y/N")
+            if confirm =="N":
+                continue
+
+        price = float(input("Enter item price: "))
         quantity = int(input("Enter item quantity: "))
         add_item(inventory, name, price, quantity)
     elif choice == "2":
-        print(inventory)
         name = input("Enter item name to remove: ")
-        remove_item(inventory, name)
+        try:
+            remove_item(inventory, name)
+        except:
+            print("Invalid Choice")
     elif choice == "3":
-        print(inventory)
         name = input("Enter item name to update: ")
         quantity = input("Enter new quantity: ")
         update_quantity(inventory, name, quantity)
     elif choice == "4":
-        print(inventory)
         display_inventory(inventory)
     elif choice == "5":
-        print(inventory)
         print("Exiting the program.")
         break
     else:
